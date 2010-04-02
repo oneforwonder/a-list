@@ -1,0 +1,61 @@
+body {
+    background: #E9EFCE;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 1.5em;
+    padding-bottom: 5px;
+}
+
+hr {
+    border: 1;
+    width: 80%;
+}
+
+a {
+    text-decoration: none;
+    color: #88AAFF;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #88AAFF;
+}
+
+.dark_link {
+    text-decoration: underline;
+    color: #000;
+}
+
+.dark_link:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+#main {
+    background: #FCFCFC;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    border-radius: 20px;
+    padding: 20px;
+    padding-top: 5px;
+}
+
+
+#header {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#logo {
+    float: left;
+}
+
+#user_status {
+    float: right;
+}
