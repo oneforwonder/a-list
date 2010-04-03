@@ -1,4 +1,4 @@
-<h1>Editing user</h1>
+<h1>Editing User</h1>
 
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
@@ -9,7 +9,7 @@
   </p>
   <p>
     <%= f.label :password %><br />
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
   </p>
   <p>
     <%= f.label :first_name %><br />
