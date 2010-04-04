@@ -1,27 +1,11 @@
-<h1>Sign Up</h1>
+<div id="home_blurb">
+  <%= render :partial => "application/application_blurb" %>
+</div>
 
-<% form_for(@user) do |f| %>
-  <%= f.error_messages %>
+<div class="vertical_line"></div>
 
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </p>
-  <p>
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
+<div id="home_sign_up">
+  <%= render :partial => "sign_up", :locals => {:user => @user} %>
+</div>
 
-<%= link_to 'Back', users_path %>
+<br clear="all" />

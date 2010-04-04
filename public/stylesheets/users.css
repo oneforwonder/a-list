@@ -1,0 +1,12 @@
+#home_blurb {
+    float:left;
+    width:58%;
+
+}
+
+#home_sign_up {
+    float:right;
+    width:38%;
+    padding-left:3%;
+    border-left: 1px dotted #CCCCCC;
+}
