@@ -3,8 +3,8 @@ class CreateShares < ActiveRecord::Migration
     create_table :shares do |t|
       t.integer :link_id
       t.integer :recipient_id
-      t.boolean :viewed, :default => 0
-      t.boolean :read, :default => 0
+      t.boolean :viewed, :default => false
+      t.boolean :read, :default => false
 
       t.timestamps
     end
