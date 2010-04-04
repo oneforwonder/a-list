@@ -61,5 +61,5 @@ a:hover {
 }
 
 span.username {
-    font-weight: 700; /* Half-way between normal and bold */
+    font-weight: bold;
 }
