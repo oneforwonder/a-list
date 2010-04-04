@@ -1,0 +1,14 @@
+<div class="comment">
+
+  <div class="byline">
+    From <%= comment_box.user.name %> <%= time_ago_in_words(comment_box.submitted_time) %> ago
+  </div>
+  
+  <br clear="all" />
+
+  <div class="content"> <%= comment_box.content %> </div>
+
+</div>
+
+<br clear="all" />
+<br />

@@ -9,7 +9,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100404015812) do
+ActiveRecord::Schema.define(:version => 20100404051723) do
+
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "link_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "friendships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "links", :force => true do |t|
+    t.string   "url"
+    t.string   "title"
+    t.text     "commentary"
+    t.integer  "submitter_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "shares", :force => true do |t|
+    t.integer  "link_id"
+    t.integer  "recipient_id"
+    t.boolean  "viewed",       :default => false
+    t.boolean  "read",         :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "first_name"

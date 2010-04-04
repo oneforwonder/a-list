@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
   acts_as_authentic
   
-  
-  
   has_many :submissions, :class_name => "Link", :foreign_key => :submitter_id
   has_many :shares, :foreign_key => :recipient_id, :order => "created_at DESC"
   has_many :comments

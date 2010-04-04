@@ -1,27 +1,36 @@
-<h1>New link</h1>
+<h1>Share a Link</h1>
 
 <% form_for(@link) do |f| %>
-  <%= f.error_messages %>
+<table>
+  <tr>
+    <td><b>URL:</b></td>
+    <td><%= f.text_field :url %></td>
+  </tr>
+  
+  <tr>
+    <td><b>Title:</b></td>
+    <td><%= f.text_field :title %></td>
+  </tr>
+  
+  <tr>
+    <td style="vertical-align: top;"><div><b>Commentary:</b></div></td>
+    <td><%= f.text_area :commentary, :rows => 5 %></td>
+  </tr>
+  
+  <tr>
+    <td style="vertical-align: top;"><b>Recipients:</b></td>
+    <td>
+    <div id="recipients"></div>
+    <div id="friend_finder"></div>
+    <div id="unknown_recipient" style="display: none;">
+        <div id="unknown_recipient_message"></div>
+        <div id="unknown_recipient_box"></div>
+    </div>
+    </td>
+  </tr>
 
-  <p>
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
-  </p>
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :commentary %><br />
-    <%= f.text_area :commentary %>
-  </p>
-  <p>
-    <%= f.label :submitter_id %><br />
-    <%= f.text_field :submitter_id %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
+  <tr>
+    <td><%= f.submit 'Share' %></td>
+  </tr>
+</table>
 <% end %>
-
-<%= link_to 'Back', links_path %>

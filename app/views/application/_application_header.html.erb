@@ -7,7 +7,7 @@
     <% if current_user %>
       <p>
         <span class="username"><%= current_user.name %></span><br />
-        <%= link_to "Submit a Link", root_url %><br />
+        <%= link_to "Submit a Link", new_link_path %><br />
         <%= link_to "Log Out", log_out_path %>      
       </p>
     <% else %>  

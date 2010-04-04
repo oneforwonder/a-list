@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/11/trunk/public/javascripts/ext/src/direct
+END
+JsonProvider.js
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/11/trunk/public/javascripts/ext/src/direct/JsonProvider.js
+END
+Transaction.js
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/11/trunk/public/javascripts/ext/src/direct/Transaction.js
+END
+Provider.js
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/11/trunk/public/javascripts/ext/src/direct/Provider.js
+END
+Direct.js
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/11/trunk/public/javascripts/ext/src/direct/Direct.js
+END
+RemotingProvider.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/11/trunk/public/javascripts/ext/src/direct/RemotingProvider.js
+END
+PollingProvider.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/11/trunk/public/javascripts/ext/src/direct/PollingProvider.js
+END
+Event.js
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/11/trunk/public/javascripts/ext/src/direct/Event.js
+END

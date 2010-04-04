@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/11/trunk/public/javascripts/ext/src/dd
+END
+StatusProxy.js
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/11/trunk/public/javascripts/ext/src/dd/StatusProxy.js
+END
+Registry.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/11/trunk/public/javascripts/ext/src/dd/Registry.js
+END
+DragTracker.js
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/11/trunk/public/javascripts/ext/src/dd/DragTracker.js
+END
+DragZone.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/11/trunk/public/javascripts/ext/src/dd/DragZone.js
+END
+ScrollManager.js
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/11/trunk/public/javascripts/ext/src/dd/ScrollManager.js
+END
+DropTarget.js
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/11/trunk/public/javascripts/ext/src/dd/DropTarget.js
+END
+DragSource.js
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/11/trunk/public/javascripts/ext/src/dd/DragSource.js
+END
+DDCore.js
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/11/trunk/public/javascripts/ext/src/dd/DDCore.js
+END
+DropZone.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/11/trunk/public/javascripts/ext/src/dd/DropZone.js
+END

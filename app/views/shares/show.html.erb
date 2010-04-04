@@ -1,23 +1,28 @@
-<p>
-  <b>Link:</b>
-  <%=h @share.link_id %>
-</p>
+<div id="share_header">
 
-<p>
-  <b>Recipient:</b>
-  <%=h @share.recipient_id %>
-</p>
+  <%= render :partial => "share_listing", :locals => {:share_listing => @share} %>
 
-<p>
-  <b>Viewed:</b>
-  <%=h @share.viewed %>
-</p>
+  <div class="content"> <%= @share.link.commentary %> </div>
+  
+</div>
 
-<p>
-  <b>Read:</b>
-  <%=h @share.read %>
-</p>
+<br />
 
+<%= render :partial => "comments/comment_box", :collection => @share.link.comments %>
 
-<%= link_to 'Edit', edit_share_path(@share) %> |
-<%= link_to 'Back', shares_path %>
+<% form_for(@comment) do |f| %>
+  <%= f.error_messages %>
+  
+  <%= hidden_field_tag "comment[user_id]", @comment.user_id %>
+  <%= hidden_field_tag "comment[link_id]", @comment.link_id %>
+  <%= hidden_field_tag "share_id", @share.id %>
+  
+  <p>
+    <%= f.text_area :content, :rows => 5 %>
+  </p>
+  <p>
+    <%= f.submit 'Add a Comment' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back to My Links', shares_path %>
