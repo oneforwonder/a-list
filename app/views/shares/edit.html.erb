@@ -1,0 +1,28 @@
+<h1>Editing share</h1>
+
+<% form_for(@share) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :link_id %><br />
+    <%= f.text_field :link_id %>
+  </p>
+  <p>
+    <%= f.label :recipient_id %><br />
+    <%= f.text_field :recipient_id %>
+  </p>
+  <p>
+    <%= f.label :viewed %><br />
+    <%= f.check_box :viewed %>
+  </p>
+  <p>
+    <%= f.label :read %><br />
+    <%= f.check_box :read %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @share %> |
+<%= link_to 'Back', shares_path %>
