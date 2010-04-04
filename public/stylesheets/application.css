@@ -59,3 +59,7 @@ a:hover {
 #user_status {
     float: right;
 }
+
+span.username {
+    font-weight: 700; /* Half-way between normal and bold */
+}

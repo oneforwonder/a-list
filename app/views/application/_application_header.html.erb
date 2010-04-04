@@ -4,7 +4,15 @@
   </div>
   
   <div id="user_status">
-    <p>Not signed in.</p>
+    <% if current_user %>
+      <p>
+        <span class="username"><%= current_user.name %></span><br />
+        <%= link_to "Submit a Link", root_url %><br />
+        <%= link_to "Log Out", log_out_path %>      
+      </p>
+    <% else %>  
+      <p>Already a user? <%= link_to "Log In", log_in_path %></p>
+    <% end %>
   </div>
   
   <br clear="all" />

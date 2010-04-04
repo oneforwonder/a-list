@@ -1,48 +1,38 @@
 class UsersController < ApplicationController
   layout "application"
   
+  before_filter :authenticate_user, :except => [:new, :create]
+  
   def index
     @users = User.all
   end
   
-  # GET /users/1
-  # GET /users/1.xml
   def show
     @user = User.find(params[:id])
   end
 
-  # GET /users/new
-  # GET /users/new.xml
   def new
     @user = User.new
   end
 
-  # GET /users/1/edit
-  def edit
-    @user = User.find(params[:id])
-  end
-
-  # POST /users
-  # POST /users.xml
   def create
     @user = User.new(params[:user])
-
-    respond_to do |format|
-      if @user.save
-        flash[:notice] = 'User was successfully created.'
-        format.html { redirect_to(@user) }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-      end
+    
+    if @user.save
+      flash[:notice] = 'Registration successful.'
+      redirect_to(@user)
+    else
+      flash[:notice] = 'Registration failed. Please try again.'
+      redirect_to root_path
     end
   end
 
-  # PUT /users/1
-  # PUT /users/1.xml
+  def edit
+    @user = current_user
+  end
+  
   def update
-    @user = User.find(params[:id])
+    @user = current_user
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -56,15 +46,11 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.xml
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(users_url) }
-      format.xml  { head :ok }
-    end
+    
+    flash[:notice] = 'Account successfully deleted.'
+    redirect_to root_path
   end
 end
