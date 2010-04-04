@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :comments
+
+  map.resources :shares
+
   map.resources :shares
 
   map.resources :links
