@@ -1,18 +1,26 @@
 <div class="share_listing">
   <div class="header">
-    <span class="title"><%= link_to share_listing.link.title, share_path(share_listing.id) %></span>
+    <span class="title"> 
+      <% if use_url %>
+        <%= link_to share_listing.link.title, share_listing.link.url %>
+      <% else %>
+        <%= link_to share_listing.link.title, share_path(share_listing.id) %>
+      <% end %>
+    </span>
     <span class="domain">(<%= share_listing.link.domain %>)</span>
   </div>
   <br clear="all" />
 
   <div class="footer">
-    Shared by <span class="username">
-    <% if share_listing.link.submitter == current_user %>
-      Me
-    <% else %>
-      <%= share_listing.link.submitter.name %> 
-    <% end %>  
-    </span> <%= time_ago_in_words(share_listing.submitted_time) %> ago
+    Shared by
+    
+    <span class="username"><%= share_listing.link.submitter.name(current_user) %></span>
+    
+    <%= time_ago_in_words(share_listing.submitted_time) %> ago
+    
+    with
+    
+    <%= share_listing.other_recipients(share_listing.link.submitter).collect {|r| link_to r.name(current_user), user_path(r), :class => "light_link"}.to_sentence %>
   </div>
 
 </div>

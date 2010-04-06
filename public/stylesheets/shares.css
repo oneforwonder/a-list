@@ -1,7 +1,7 @@
 #share_header {
   padding: 1%;
   border: 1px solid #CCFFCC;
-  border-radius:4px;
+  border-radius: 4px;
 }
 
 #shares_list {
@@ -30,4 +30,13 @@
     color: #999;
     float: left;
     padding-top: 3px;
+}
+
+.share_listing a.light_link {
+    color: #999;
+    text-decoration: underline;
+}
+
+.share_listing a.light_link:hover {
+    text-decoration: none;
 }

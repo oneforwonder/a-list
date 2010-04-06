@@ -5,7 +5,7 @@
 <% if @shares.empty? %>
   There are no links here yet.
 <% else %>
-  <%= render :partial => "share_listing", :collection => @shares %>
+  <%= render :partial => "share_listing", :collection => @shares, :locals => {:use_url => false} %>
 <% end %>
 
 </div>

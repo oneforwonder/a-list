@@ -1,6 +1,6 @@
 <div id="share_header">
 
-  <%= render :partial => "share_listing", :locals => {:share_listing => @share} %>
+  <%= render :partial => "share_listing", :locals => {:share_listing => @share, :use_url => true} %>
 
   <div class="content"> <%= @share.link.commentary %> </div>
   

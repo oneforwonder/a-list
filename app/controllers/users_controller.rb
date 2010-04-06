@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'Registration successful.'
       redirect_to shares_path
     else
-      flash[:notice] = 'Registration failed. Please try again.'
+      flash[:error] = 'Registration failed. Please try again.'
       redirect_to root_path
     end
   end
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'Profile successfully updated.'
       redirect_to(@user)
     else
-      flash[:notice] = 'Update failed. Please try again.'
+      flash[:error] = 'Update failed. Please try again.'
       render :action => "edit"
     end
   end

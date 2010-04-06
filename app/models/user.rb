@@ -7,8 +7,10 @@ class User < ActiveRecord::Base
   has_many :friendships
   has_many :friends, :through => :friendships
   
-  def name
-    if first_name
+  def name(current_user="")
+    if self == current_user
+      "me"
+    elsif first_name
       first_name.to_s + " " + last_name.to_s
     else
       email

@@ -23,13 +23,20 @@ class LinksController < ApplicationController
 
           # Find or create recipient.
           recipient = User.find_by_email(email)
-          if !recipient
+          
+          if recipient == current_user
+            if params[:recipients].length == 1
+              flash[:error] = "You can't share a link with yourself."
+              redirect_to new_link_path and return
+            end
+            next
+          elsif !recipient
             password = SecureRandom.hex(8)
             recipient = User.new(:email => email, :password => password,
                                 :password_confirmation => password)
             # The DB schema requires a password
           end
-
+          
           if recipient.save!
             share = recipient.shares.create(:link => @link)
 
