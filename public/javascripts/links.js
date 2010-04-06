@@ -22,7 +22,7 @@ function addUnknownRecipient(email)
 Ext.onReady(function()
 {
     Ext.QuickTips.init();
-
+    
     // turn on validation errors beside the field globally
     Ext.form.Field.prototype.msgTarget = 'side';
     

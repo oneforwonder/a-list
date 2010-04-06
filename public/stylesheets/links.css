@@ -1,1 +1,8 @@
+.recipient {
+    padding-bottom: 10px;
+}
 
+#unknown_recipient {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
