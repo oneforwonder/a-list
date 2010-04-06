@@ -1,4 +1,7 @@
 class ShareMailer < ActionMailer::Base
+  include ActionController::UrlWriter
+  default_url_options[:host] = "alist.heroku.com"
+  
   add_template_helper(ApplicationHelper)
   
   def notify(share, sent_at = Time.now)
