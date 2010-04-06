@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     
     if @user.update_attributes(params[:user])
       flash[:notice] = 'Profile successfully updated.'
-      format.html { redirect_to(@user) }
+      redirect_to(@user)
     else
       flash[:notice] = 'Update failed. Please try again.'
       render :action => "edit"
@@ -52,4 +52,17 @@ class UsersController < ApplicationController
     flash[:notice] = 'Account successfully deleted.'
     redirect_to root_path
   end
+
+
+  def friends
+    friend_list = []
+    @current_user.friends.each do |f|
+      friend_list << {:name => f.name, :email => f.email}
+    end
+
+    respond_to do |format|
+      format.js { render :json => {:friends => friend_list} }
+    end
+  end
+  
 end
