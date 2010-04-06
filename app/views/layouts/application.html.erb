@@ -9,8 +9,11 @@
   <%= stylesheet_link_tag "/javascripts/ext/resources/css/xtheme-gray.css" %>
   <%= stylesheet_link_tag "application" %>
   <%= stylesheet_link_tag controller.controller_name %>
-  <%= javascript_include_tag "/javascripts/ext/ext-base.js", :cache => true %>
-  <%= javascript_include_tag "/javascripts/ext/ext-all.js", :cache => true %>
+<!-- Why the hell aren't these working with Heroku? -->
+<!--   <%= javascript_include_tag "/javascripts/ext/ext-base.js", :cache => true %> -->
+<!--   <%= javascript_include_tag "/javascripts/ext/ext-all.js", :cache => true %> -->
+  <script src="/javascripts/ext/ext-base.js" type="text/javascript"></script> 
+  <script src="/javascripts/ext/ext-all-debug.js" type="text/javascript"></script> 
   <%= javascript_include_tag "application.js" %>
   <%= javascript_include_tag controller.controller_name %>
 </head>
