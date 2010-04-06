@@ -17,15 +17,27 @@ class LinksController < ApplicationController
       self_share = @current_user.shares.create(:link => @link)
       
       params[:recipients].each do |email|
-        recipient = User.find_or_create_by_email(email)
-        if recipient
+        puts "email: #{email}"
+
+        # Find or create recipient.
+        recipient = User.find_by_email(email)
+        if !recipient
+          password = SecureRandom.hex(8)
+          recipient = User.new(:email => email, :password => password,
+                               :password_confirmation => password)
+          # The DB schema requires a password
+        end
+
+        if recipient.save!
           share = recipient.shares.create(:link => @link)
+
+          # TODO: Make email notifications optional.
           #if recipient.email_notifications || !recipient.activated
             # TODO: Possibly distinguish between these three cases:
             #  - Non-Activated User receiving first ever email from us
             #  - Non-Activated User receiving not first email
             #  - Activated User with email notifications on
-            #share.email_recipient
+          share.email_recipient
           #end
           
           # Create "friendships"
