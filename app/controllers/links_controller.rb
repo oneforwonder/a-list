@@ -15,9 +15,9 @@ class LinksController < ApplicationController
     
     if @link.save
       #flash[:notice] = 'Link shared successfully.'
-      self_share = @current_user.shares.create(:link => @link)
+      self_share = @current_user.shares.new(:link => @link)
 
-      if !params[:recipents].nil?   # TODO: Validate before submission with JS.
+      if !params[:recipients].nil?   # TODO: Validate before submission with JS.
         params[:recipients].each do |email|
           puts "email: #{email}"
 
@@ -51,7 +51,8 @@ class LinksController < ApplicationController
             end # End friendships if
           end # End recipient if
         end # End each recipient
-
+        
+        self_share.save
         redirect_to share_path(self_share.id)
       else
         redirect_to new_link_path
