@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_user
   
+  
+  def default_url_options(options = nil)
+    { :host => "alist.heroku.com" }
+  end
+  
   private
   
   def authenticate_user
