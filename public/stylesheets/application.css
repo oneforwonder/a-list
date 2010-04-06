@@ -63,16 +63,46 @@ a:hover {
 
 #logo {
     float: left;
+    margin-top: 12px;
+}
+
+#title {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#title:hover {
+    text-decoration: underline;
 }
 
 #user_status {
     float: right;
 }
 
-span.username {
+#user_status .username {
     font-weight: bold;
 }
 
+#user_status .links {
+    font-size: 0.8em;
+}
+
+#flash {
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+}
+
+#flash #notice {
+    font-weight: bold;
+}
+
+#flash #error {
+    font-weight: bold;
+    color: #CC0000;
+}
 
 #yield {
     padding: 20px;

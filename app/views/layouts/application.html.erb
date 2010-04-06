@@ -20,7 +20,13 @@
   <div id="main">
 
     <%= render :partial => "application/application_header" %>
-
+    
+    <div id="flash">
+        <span id="notice"><%= flash[:notice] %></span>
+        <span id="error"><%= flash[:error] %></span>
+    </div>
+    
+    
     <div id="yield">
       <%= yield %>
     </div>

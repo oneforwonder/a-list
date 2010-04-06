@@ -1,17 +1,16 @@
 <div id="header">
   <div id="logo">
-    <h1>A-List</h1>
+    <a href="/" id="title">A-List</a>
   </div>
   
   <div id="user_status">
     <% if current_user %>
       <p>
         <span class="username"><%= current_user.name %></span><br />
-        <%= link_to "Submit a Link", new_link_path %><br />
-        <%= link_to "Log Out", log_out_path %>      
+        <span class="links"><%= link_to "Share a Link", new_link_path, :class => "dark_link" %> | <%= link_to "Log Out", log_out_path, :class => "dark_link" %></span>
       </p>
     <% else %>  
-      <p>Already a user? <%= link_to "Log In", log_in_path %></p>
+      <p>Already a user? <%= link_to "Log In", log_in_path, :class => "dark_link" %></p>
     <% end %>
   </div>
   

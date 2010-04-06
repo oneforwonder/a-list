@@ -11,7 +11,7 @@ class SharesController < ApplicationController
     if @share.recipient != current_user
       redirect_to shares_path
     else
-      @comment = Comment.new(:user=>current_user, :link=>@share.link)
+      @comment = Comment.new(:user => current_user, :link => @share.link)
     end
   end
 end

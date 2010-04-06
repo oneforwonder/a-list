@@ -12,6 +12,7 @@ class LinksController < ApplicationController
   # Create "friendships" between users.
   def create
     @link = @current_user.submissions.new(params[:link])
+    
     if @link.save
       #flash[:notice] = 'Link shared successfully.'
       self_share = @current_user.shares.create(:link => @link)
@@ -54,11 +55,11 @@ class LinksController < ApplicationController
         redirect_to share_path(self_share.id)
       else
         redirect_to new_link_path
-        flash[:notice] = 'You need at least one recipient.'
+        flash[:error] = 'You need at least one recipient.'
       end # End params[:recipients] if
       
     else
-      flash[:notice] = 'Link sharing failed. Sorry.'
+      flash[:error] = 'Link sharing failed. Sorry.'
     end # End link saved
   end # End create method
 end # End LinkController class
