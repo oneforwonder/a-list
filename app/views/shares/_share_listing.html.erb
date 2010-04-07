@@ -2,7 +2,7 @@
   <div class="header">
     <span class="title"> 
       <% if use_url %>
-        <%= link_to share_listing.link.title, share_listing.link.url %>
+        <%= link_to share_listing.link.title, share_listing.link.url, :target => "_blank" %>
       <% else %>
         <%= link_to share_listing.link.title, share_path(share_listing.id) %>
       <% end %>
