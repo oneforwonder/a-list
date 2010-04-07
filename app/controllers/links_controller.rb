@@ -37,7 +37,7 @@ class LinksController < ApplicationController
             # The DB schema requires a password
           end
           
-          if recipient.save!
+          if recipient.save
             share = recipient.shares.create(:link => @link)
 
             # TODO: Make email notifications optional.

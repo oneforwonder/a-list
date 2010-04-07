@@ -16,9 +16,9 @@ class Link < ActiveRecord::Base
   
   private
     def add_http
-      if self.url.index(/https?:\/\//) != 0 # If the URL doesn't start with http[s]://...
+      if self.url.index(/^[A-Za-z]{1,8}:\/\//) != 0 # If the URL doesn't start with eight characters and ://...
         self.url = "http://" + self.url
       end
     end
-        
+
 end
