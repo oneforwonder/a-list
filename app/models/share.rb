@@ -1,11 +1,10 @@
 class Share < ActiveRecord::Base
   belongs_to :link
   belongs_to :recipient, :class_name => "User"
-  
-  def other_recipients(current_user)
-    all_recipients = []
-    self.link.shares.each { |s| all_recipients << s.recipient unless s.recipient == current_user }
-    all_recipients
+
+  # Returns all recipients other than the submitter.
+  def other_recipients
+    self.link.recipients.select { |r| r.recipient != self.link.submitter }
   end
   
   def submitted_time
