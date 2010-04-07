@@ -33,7 +33,7 @@ class LinksController < ApplicationController
           elsif !recipient
 #             Not available on Heroku...
 #             password = SecureRandom.hex(8)
-            password = Digest::SHA1.hexdigest(rand(1000)) # It's dumb and I don't care.
+            password = Digest::SHA1.hexdigest(rand(1000).to_s) # It's dumb and I don't care.
             recipient = User.new(:email => email, :password => password,
                                 :password_confirmation => password)
             # The DB schema requires a password
