@@ -4,7 +4,7 @@ class Share < ActiveRecord::Base
 
   # Returns all recipients other than the submitter.
   def other_recipients
-    self.link.recipients.select { |r| r.recipient != self.link.submitter }
+    self.link.recipients.select { |r| r != self.link.submitter }
   end
   
   def submitted_time
