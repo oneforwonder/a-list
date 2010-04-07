@@ -16,7 +16,7 @@
     
     <span class="username">
       <% submitter = share_listing.link.submitter %>
-      <%= link_to submitter.name(current_user), user_path(submitter) %>
+      <%= link_to submitter.name(current_user), user_path(submitter), :class => "light_link" %>
     </span>
     
     <%= time_ago_in_words(share_listing.submitted_time) %> ago
