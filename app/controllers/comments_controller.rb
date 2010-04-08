@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     if @comment.save
       flash[:notice] = 'Commented added successfully.'
     else
-      flash[:notice] = 'Comment not saved. Please try again.'
+      flash[:notice] = 'Comment could not saved. Please try again.'
     end
     
     redirect_to share_path(params[:share_id])
