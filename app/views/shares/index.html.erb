@@ -1,12 +1,3 @@
 <h1>Your Links</h1>
 
-
-<div id="shares_list">
-
-<% if @shares.empty? %>
-  There are no links here yet.
-<% else %>
-  <%= render :partial => "share_listing", :collection => @shares, :locals => {:use_url => false} %>
-<% end %>
-
-</div>
+<%= render :partial => "share_list", :locals => {:shares => @shares} %>

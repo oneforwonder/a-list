@@ -8,23 +8,13 @@
 <% if @user != current_user %>
 
   <h2>Links <%= @user.name %> Has Shared With Me</h2>
-
-  <% shared_with_me = current_user.shares_from(@user)%>
-  <% if shared_with_me.empty? %>
-    There are no links here yet. <br />
-  <% else %>
-    <%= render :partial => "shares/share_listing", :collection => shared_with_me, :locals => {:use_url => false} %>
-  <% end %>
   
+  <%= render :partial => "shares/share_list", :locals => { :shares => current_user.shares_from(@user) } %>
+
 
   <h2>Links I Have Shared With <%= @user.name %></h2>
-
-  <% shared_by_me = @user.shares_from(current_user) %>
-  <% if shared_by_me.empty? %>
-    There are no links here yet. <br />
-  <% else %>
-    <%= render :partial => "shares/share_listing", :collection => shared_by_me, :locals => {:use_url => false} %>
-  <% end %>
+  
+  <%= render :partial => "shares/share_list", :locals => { :shares => @user.shares_from(current_user) } %>
 
 <% end %>
 

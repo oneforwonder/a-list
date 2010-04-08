@@ -1,0 +1,10 @@
+
+<div id="shares_list">
+
+<% if shares.empty? %>
+  <p>There are no links here yet.</p>
+<% else %>
+  <%= render :partial => "shares/share_listing", :collection => shares, :locals => {:use_url => false} %>
+<% end %>
+
+</div>
