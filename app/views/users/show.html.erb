@@ -1,20 +1,35 @@
-<p>
-  <b>Email:</b>
-  <%=h @user.email %>
-</p>
 
-<p>
-  <b>First name:</b>
-  <%=h @user.first_name %>
-</p>
+<% if @user.first_name %>
+  <h1><%= "#{@user.name} (#{@user.email})" %></h1>
+<% else %>
+  <h1><%= @user.email %></h2>
+<% end %>
 
-<p>
-  <b>Last name:</b>
-  <%=h @user.last_name %>
-</p>
+<% if @user != current_user %>
+
+  <h2>Links <%= @user.name %> Has Shared With Me</h2>
+
+  <% shared_with_me = current_user.shares_from(@user)%>
+  <% if shared_with_me.empty? %>
+    There are no links here yet.
+  <% else %>
+    <%= render :partial => "shares/share_listing", :collection => shared_with_me, :locals => {:use_url => false} %>
+  <% end %>
+  <br /> <br />
+
+  <h2>Links I Have Shared With <%= @user.name %></h2>
+
+  <% shared_by_me = @user.shares_from(current_user) %>
+  <% if shared_by_me.empty? %>
+    There are no links here yet.
+  <% else %>
+    <%= render :partial => "shares/share_listing", :collection => shared_by_me, :locals => {:use_url => false} %>
+  <% end %>
+
+<% end %>
 
 
 <% if @user == current_user %>
   <%= link_to 'Edit', edit_user_path(@user) %> |
 <% end %>
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back to My Links', root_path %>

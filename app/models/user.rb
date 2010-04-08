@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
   def unread_shares
     shares.select {|s| !s.read }
   end
+
+  def shares_from(submitter)
+    shares.select {|s| s.link.submitter == submitter }
+  end
 end
