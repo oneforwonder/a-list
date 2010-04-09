@@ -1,9 +1,9 @@
 class RemoveViewedFromShares < ActiveRecord::Migration
   def self.up
-    remove_column :users, :viewed
+    remove_column :shares, :viewed
   end
 
   def self.down
-    add_column :users, :viewed, :boolean, :default => false
+    add_column :shares, :viewed, :boolean, :default => false
   end
 end
