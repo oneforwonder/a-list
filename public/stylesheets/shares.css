@@ -1,7 +1,9 @@
 #share_header {
-  padding: 1%;
-  border: 1px solid #CCFFCC;
-  border-radius: 4px;
+    padding: 1%;
+    border: 1px solid #CCDDCC;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
 }
 
 #shares_list {

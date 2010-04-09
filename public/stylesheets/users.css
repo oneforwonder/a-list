@@ -1,3 +1,5 @@
+/*  user/new  */
+
 #home_blurb {
     float:left;
     width:58%;
@@ -9,4 +11,23 @@
     width:38%;
     padding-left:3%;
     border-left: 1px dotted #CCCCCC;
+}
+
+
+/*  user/edit  */
+
+#email_preferences {
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    
+    border: 1px solid #CCDDCC;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+#email_preferences ul {
+    padding-left: 8px;
 }
