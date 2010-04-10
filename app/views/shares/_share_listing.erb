@@ -16,14 +16,14 @@
     
     <span class="username">
       <% submitter = share_listing.link.submitter %>
-      <%= link_to submitter.name(current_user), user_path(submitter), :class => "light_link" %>
+      <%= link_to me_ify(submitter), user_path(submitter), :class => "light_link" %>
     </span>
     
     <%= time_ago_in_words(share_listing.submitted_time) %> ago
     
     with
     
-    <%= share_listing.other_recipients.collect {|r| link_to r.name(current_user), user_path(r), :class => "light_link"}.to_sentence %>
+    <%= share_listing.other_recipients.collect {|r| link_to me_ify(r), user_path(r), :class => "light_link"}.to_sentence %>
   </div>
 
 </div>

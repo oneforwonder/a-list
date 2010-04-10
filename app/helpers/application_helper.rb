@@ -6,4 +6,11 @@ module ApplicationHelper
     "\"#{s}\""
   end
   
+  def me_ify(user)
+    if user == current_user
+      "me"
+    else
+      user.name
+    end
+  end
 end
