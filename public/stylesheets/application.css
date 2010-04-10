@@ -40,6 +40,8 @@ a:hover {
     margin-right: auto;
     margin-top: 40px;
     border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
 }
 
 
@@ -47,6 +49,14 @@ a:hover {
     border-radius: 20px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
+    
+    -webkit-border-radius: 20px;
+    -webkit-border-bottom-left-radius: 0px;
+    -webkit-border-bottom-right-radius: 0px;
+    
+    -moz-border-radius: 20px;
+    -moz-border-radius-bottomleft: 0px;
+    -moz-border-radius-bottomright: 0px;
 
     padding-top: 0.5em;
     padding-bottom: 0.2em;
