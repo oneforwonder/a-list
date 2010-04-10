@@ -1,0 +1,33 @@
+.share_listing {
+    float: left;
+}
+
+.share_listing .header {
+    float: left;
+}
+
+.share_listing .title {
+    font-size: 1.2em;
+    padding-right: 5px;
+}
+
+.share_listing .domain {
+    font-size: 0.8em;
+    color: #999;
+}
+
+.share_listing .footer {
+    font-size: 0.8em;
+    color: #999;
+    float: left;
+    padding-top: 3px;
+}
+
+.share_listing a.light_link {
+    color: #999;
+    text-decoration: underline;
+}
+
+.share_listing a.light_link:hover {
+    text-decoration: none;
+} 
