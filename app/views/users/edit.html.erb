@@ -1,28 +1,20 @@
-<h1>Editing User</h1>
+<h1>Settings</h1>
 
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
 
+  <div id="email_preferences">
+    <h3>Email Preferences</h3>
+    <p>Send me an email when:
+      <ul>
+        <li><%= f.check_box :share_notifications %> Someone shares a link with me</li>
+      </ul>
+    </p>
+  </div>
+  
   <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </p>
-  <p>
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Save Settings' %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back to My Links', shares_path %>

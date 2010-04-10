@@ -8,6 +8,22 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+
+    if @user == current_user
+      # For now, whenever a user goes to their own user page,
+      # they will be sent to edit action where they can edit
+      # their preferences.
+      # If we add profiles, then we might show the user their profile
+      # here and provide a link to edit their profile or preferences.      
+      redirect_to edit_user_path(current_user)
+
+    elsif !current_user.friends.include?(@user)
+      # Prevent users from seeing the full name and email address
+      # of users they are not friends with.
+      redirect_to root_url
+      flash[:error] = 'You may only view the profile of users you are friends with.'
+    end
+    
   end
 
   
@@ -40,7 +56,7 @@ class UsersController < ApplicationController
     @user = current_user
     
     if @user.update_attributes(params[:user])
-      flash[:notice] = 'Profile successfully updated.'
+      flash[:notice] = 'Settings updated successfully.'
       redirect_to(@user)
     else
       flash[:error] = 'Update failed. Please try again.'

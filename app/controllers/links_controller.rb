@@ -46,14 +46,14 @@ class LinksController < ApplicationController
           if recipient.save
             share = recipient.shares.create(:link => @link)
 
-            # TODO: Make email notifications optional.
-            #if recipient.email_notifications || !recipient.activated
-              # TODO: Possibly distinguish between these three cases:
+            if recipient.share_notifications  # || !recipient.activated
+              # TODO:
+              # Possibly distinguish between these three cases:
               #  - Non-Activated User receiving first ever email from us
               #  - Non-Activated User receiving not first email
               #  - Activated User with email notifications on
-            share.email_recipient
-            #end
+              share.email_recipient
+            end
 
             # Create friendships between submitter and recipient,
             # if they don't already exist.
