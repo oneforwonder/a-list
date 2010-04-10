@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(:version => 20100410225045) do
   create_table "shares", :force => true do |t|
     t.integer  "link_id"
     t.integer  "recipient_id"
-    t.boolean  "viewed",       :default => false
     t.boolean  "read",         :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
