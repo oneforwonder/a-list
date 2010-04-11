@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     if @user
       # Cases 2 and 3.
       params[:user].delete(:email) # They can't arbitrarily change their email address.
-      @user = User.update_attributes(params[:user])
+      @user.update_attributes(params[:user])
     else
       # Case 1.
       @user = User.new(params[:user])
@@ -94,7 +94,7 @@ class UsersController < ApplicationController
       redirect_to root_url and return
     end
     
-    @names = User.shares.collect { |s| s.link.submitter.name }.uniq.to_sentence
+    @names = @user.shares.collect { |s| s.link.submitter.name }.uniq.to_sentence
   end
   
   def edit
