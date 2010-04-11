@@ -2,5 +2,5 @@ Hi<%= !@share.recipient.first_name.nil? ? " " + @share.recipient.first_name : ""
 
 <%= @share.link.submitter.name %> shared "<%= @share.link.title %>" with you.
 
-You can check it out at: <%= url %>
+You can check it out at: <%= @url %>
 
