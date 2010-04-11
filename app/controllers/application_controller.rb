@@ -14,14 +14,19 @@ class ApplicationController < ActionController::Base
   
   def authenticate_user
     if !current_user
-      redirect_to root_url
+      store_destination
+      redirect_to log_in_path
+      flash[:notice] = 'Before you go there, you need to log in.'
     end
   end
 
-  def authenticate_probable_user
-    if !current_user
-      redirect_to log_in_path
-    end
+  def store_destination
+    session[:return_to] = request.request_uri
+  end
+
+  def redirect_to_destination_or_default(default)
+    redirect_to(session[:return_to] || default)
+    session[:return_to] = nil
   end
   
   def current_user_session

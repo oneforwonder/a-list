@@ -10,7 +10,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:notice] = 'Successfully logged in.'
-      redirect_to shares_path
+      redirect_to_destination_or_default shares_path
     else
       render :action => 'new'
     end
