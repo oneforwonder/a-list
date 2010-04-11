@@ -40,7 +40,7 @@ class LinksController < ApplicationController
             # so we'll generate a random one.
             password = Digest::SHA1.hexdigest(rand(1000000).to_s)
             recipient = User.new(:email => email, :password => password,
-                                 :password_confirmation => password
+                                 :password_confirmation => password,
                                  :perishable_token => "")
             recipient.reset_perishable_token!
           end
