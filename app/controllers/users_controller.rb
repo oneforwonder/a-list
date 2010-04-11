@@ -47,7 +47,8 @@ class UsersController < ApplicationController
       @user.update_attributes(params[:user])
     else
       # Case 1.
-      @user = User.new(params[:user])
+      @user = User.new(params[:user].merge({:perishable_token => ""}))
+      @user.reset_perishable_token!
     end
     
     # This is true when a user finishes their registration from a link in their email (Case 3),
