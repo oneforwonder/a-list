@@ -17,6 +17,12 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
     end
   end
+
+  def authenticate_probable_user
+    if !current_user
+      redirect_to log_in_path
+    end
+  end
   
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
