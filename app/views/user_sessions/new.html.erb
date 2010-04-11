@@ -1,7 +1,7 @@
 <h1>Log In</h1>
 
 <% form_for @user_session do |f| %>
-  <%= f.error_messages %>
+  <%= f.error_messages :header_message => "", :message => "Problem logging in:" %>
   <p>
     <%= f.label :email %><br />
     <%= f.text_field :email %>
