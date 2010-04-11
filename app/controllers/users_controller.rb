@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
   layout "application"
-  before_filter :authenticate_user, :except => [:new, :create, :activate]
-  
-  def index
-    @users = User.all
-  end
+  before_filter :authenticate_user, :except => [:new, :create, :activate, :finish_registration]
   
   def show
     @user = User.find(params[:id])
@@ -35,19 +31,42 @@ class UsersController < ApplicationController
     end
   end
 
+  # This method can be called in one of three cases:
+  #   1.The user is not in the system and attempts to sign-up
+  #   2.The user is in the system (because someone has shared a link with them)
+  #     but they are still trying to sign-up through the homepage
+  #   3.The user is in the system (because someone has shared a link with them)
+  #     and they are signing up through the email they recieved 
+  #     (via the finish_registration action which calls this one)
   def create
-    @user = User.new(params[:user])
+    @user = User.find_by_email_and_activated(params[:user][:email], false) # We can only register a user that hasn't been activated yet.
     
-    # Saving without session maintenance to skip
-    # auto-login which can't happen here because
-    # the User has not yet been activated
-    if @user.save_without_session_maintenance
-      @user.deliver_activation_instructions
-      flash[:notice] = 'Registration successful. Please check your email to activate your account.'
-      redirect_to shares_path
+    if @user
+      # Cases 2 and 3.
+      params[:user].delete(:email) # They can't arbitrarily change their email address.
+      @user = User.update_attributes(params[:user])
     else
-      flash[:error] = 'Registration failed. Please try again.'
-      redirect_to root_path
+      # Case 1.
+      @user = User.new(params[:user])
+    end
+    
+    # This is true when a user finishes their registration from a link in their email (Case 3),
+    # which means we don't need to send an activation link.
+    if params[:token] && User.find_using_perishable_token(params[:token], 0) == @user
+      activate
+    else
+      # Cases 1 and 2. 
+      # Saving without session maintenance to skip
+      # auto-login which can't happen here because
+      # the user has not yet been activated
+      if @user.save_without_session_maintenance
+        @user.deliver_activation_instructions
+        flash[:notice] = 'Registration successful. Please check your email to activate your account.'
+        redirect_to shares_path
+      else
+        flash[:error] = 'Registration failed. Please try again.'
+        redirect_to root_path
+      end
     end
   end
   
@@ -59,6 +78,7 @@ class UsersController < ApplicationController
     else
       if !@user.active?
         @user.activated = true
+        @user.reset_perishable_token!
         @user.save
         UserSession.create(@user) # Log the user in.
         flash[:notice] = 'Account activated successfully.'
@@ -66,6 +86,15 @@ class UsersController < ApplicationController
       
       redirect_to shares_path
     end
+  end
+  
+  def finish_registration
+    @user = User.find_using_perishable_token(params[:token], 0) # Token does not expire.
+    if !@user
+      redirect_to root_url and return
+    end
+    
+    @names = User.shares.collect { |s| s.link.submitter.name }.uniq.to_sentence
   end
   
   def edit

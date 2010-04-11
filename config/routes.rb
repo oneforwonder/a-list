@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.connect "/users/friends", :controller => "users", :action => "friends"
   map.activate "/users/activate/:token", :controller => "users", :action => "activate"
+  map.finish_registration "/users/finish_registration/:token", :controller => "users", :action => "finish_registration"
   
   map.resources :shares
   map.resources :links
