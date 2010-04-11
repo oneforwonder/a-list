@@ -10,7 +10,7 @@ class ShareMailer < ActionMailer::Base
       url = share_url(@share.id)
     else
       # The user needs to finish creating their account first.
-      url = finish_registration_url(share.recipient.persistence_token)
+      url = finish_registration_url(share.recipient.perishable_token)
     end
   
     from          "Share Notifier <shares@alist.heroku.com>"
