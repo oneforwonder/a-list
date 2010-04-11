@@ -3,13 +3,13 @@
 <% form_for(@link) do |f| %>
 <table>
   <tr>
-    <td><b>URL:</b></td>
-    <td><%= f.text_field :url %></td>
-  </tr>
-  
-  <tr>
     <td><b>Title:</b></td>
     <td><%= f.text_field :title %></td>
+  </tr>
+
+  <tr>
+    <td><b>URL:</b></td>
+    <td><%= f.text_field :url, :value => 'http://' %></td>
   </tr>
   
   <tr>
