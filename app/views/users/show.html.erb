@@ -1,5 +1,5 @@
 
-<% if @user.first_name %>
+<% if @user.active? %>
   <h1><%= "#{@user.name} (#{@user.email})" %></h1>
 <% else %>
   <h1><%= @user.email %></h2>
