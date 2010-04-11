@@ -1,0 +1,11 @@
+<div id="home_blurb">
+  <%= render :partial => "application/application_blurb" %>
+</div>
+
+<div class="vertical_line"></div>
+
+<div id="home_sign_up">
+  <%= render :partial => "sign_up", :locals => {:user => @user, :finish_registration => true} %>
+</div>
+
+<br clear="all" />
