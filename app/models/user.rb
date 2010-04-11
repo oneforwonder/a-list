@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   end
   
   def name
-    if first_name
+    if active?
       first_name.to_s + " " + last_name.to_s
     else
       email

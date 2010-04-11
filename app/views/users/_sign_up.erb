@@ -2,6 +2,8 @@
 
 <% form_for(user) do |f| %>
   <%= f.error_messages %>
+  <%= hidden_field_tag "token", user.perishable_token if finish_registration %>
+  <%= f.hidden_field :email if finish_registration %>
   
   <p>
     <%= f.label :first_name %><br />
@@ -13,7 +15,11 @@
   </p>
   <p>
     <%= f.label :email %><br />
-    <%= f.text_field :email %>
+    <% if finish_registration %>
+      <%= user.email %>
+    <% else %>
+      <%= f.text_field :email %>
+    <% end %>
   </p>
   <p>
     <%= f.label :password %><br />
