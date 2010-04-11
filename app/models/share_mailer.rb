@@ -7,7 +7,7 @@ class ShareMailer < ActionMailer::Base
   def notify(share, sent_at = Time.now)
     if share.recipient.activated
       # Send the user directly to the share.
-      url = share_url(@share.id)
+      url = share_url(share.id)
     else
       # The user needs to finish creating their account first.
       url = finish_registration_url(share.recipient.perishable_token)

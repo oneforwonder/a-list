@@ -28,6 +28,12 @@ class LinksController < ApplicationController
 
     else
       @link = @current_user.submissions.new(params[:link])
+      
+      # Swap the URL and title if we think the user accidentally swapped them
+      if !@link.is_url?(:url) && @link.is_url?(:title)
+        @link.url, @link.title = @link.title, @link.url
+      end
+      
       if @link.save
         emails.each do |email|
           # Find the user or create a "placeholder" user.

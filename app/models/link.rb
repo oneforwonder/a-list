@@ -14,9 +14,13 @@ class Link < ActiveRecord::Base
     end
   end
   
+  def is_url?(field)
+    self.send(field).index(/^[A-Za-z]{1,8}:\/\//) == 0  # If the URL doesn't start with eight characters and ://...
+  end
+  
   private
     def add_http
-      if self.url.index(/^[A-Za-z]{1,8}:\/\//) != 0 # If the URL doesn't start with eight characters and ://...
+      if !is_url?(:url)
         self.url = "http://" + self.url
       end
     end
