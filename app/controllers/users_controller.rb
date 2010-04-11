@@ -36,8 +36,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.find_by_email_and_activated(params[:user][:email], false) # We can only register a user that hasn't been activated yet.
     
+    if @user
+      params[:user].delete(:email) # They can't arbitrarily change their email address.
+      @user = User.update_attributes(params[:user])
+    else
+      @user = User.new(params[:user])
+    end
+      
     # Saving without session maintenance to skip
     # auto-login which can't happen here because
     # the User has not yet been activated
@@ -49,6 +56,7 @@ class UsersController < ApplicationController
       flash[:error] = 'Registration failed. Please try again.'
       redirect_to root_path
     end
+    
   end
   
   
@@ -59,12 +67,20 @@ class UsersController < ApplicationController
     else
       if !@user.active?
         @user.activated = true
+        @user.reset_perishable_token!
         @user.save
         UserSession.create(@user) # Log the user in.
         flash[:notice] = 'Account activated successfully.'
       end
       
       redirect_to shares_path
+    end
+  end
+  
+  def finish_registration
+    @user = User.find_using_perishable_token(params[:token], 0) # Token does not expire.
+    if !@user
+      redirect_to root_url and return
     end
   end
   
