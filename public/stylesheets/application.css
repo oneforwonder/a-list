@@ -33,6 +33,15 @@ a:hover {
     color: #000;
 }
 
+#errorExplanation {
+    color: #CC0000;
+}
+
+
+#errorExplanation ul {
+    list-style: disc;
+}
+
 #main {
     background: #FCFCFC;
     max-width: 1000px;

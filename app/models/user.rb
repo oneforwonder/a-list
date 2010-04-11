@@ -28,4 +28,10 @@ class User < ActiveRecord::Base
   def shares_from(submitter)
     shares.select {|s| s.link.submitter == submitter }
   end
+  
+  def deliver_activation_instructions
+    reset_perishable_token!
+    ActivationMailer.deliver_activation_instructions(self)
+  end
+  
 end

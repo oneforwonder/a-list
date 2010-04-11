@@ -1,8 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
-  map.log_in "log_in", :controller => "user_sessions", :action => "new"
-  map.log_out "log_out", :controller => "user_sessions", :action => "destroy"
+  map.log_in "/log_in", :controller => "user_sessions", :action => "new"
+  map.log_out "/log_out", :controller => "user_sessions", :action => "destroy"
   
   map.connect "/users/friends", :controller => "users", :action => "friends"
+  map.activate "/users/activate/:token", :controller => "users", :action => "activate"
   
   map.resources :shares
   map.resources :links

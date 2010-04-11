@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   layout "application"
-  before_filter :authenticate_user, :except => [:new, :create]
+  before_filter :authenticate_user, :except => [:new, :create, :activate]
   
   def index
     @users = User.all
@@ -38,15 +38,35 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     
-    if @user.save
-      flash[:notice] = 'Registration successful.'
+    # Saving without session maintenance to skip
+    # auto-login which can't happen here because
+    # the User has not yet been activated
+    if @user.save_without_session_maintenance
+      @user.deliver_activation_instructions
+      flash[:notice] = 'Registration successful. Please check your email to activate your account.'
       redirect_to shares_path
     else
       flash[:error] = 'Registration failed. Please try again.'
       redirect_to root_path
     end
   end
-
+  
+  
+  def activate
+    @user = User.find_using_perishable_token(params[:token], 0) # Token does not expire.
+    if !@user
+      redirect_to root_url
+    else
+      if !@user.active?
+        @user.activated = true
+        @user.save
+        UserSession.create(@user) # Log the user in.
+        flash[:notice] = 'Account activated successfully.'
+      end
+      
+      redirect_to shares_path
+    end
+  end
   
   def edit
     @user = current_user
