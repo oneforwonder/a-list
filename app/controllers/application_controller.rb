@@ -3,20 +3,24 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  protect_from_forgery # See ActionController::RequestForgeryProtection for details
-
-  # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
-  
   helper_method :current_user
+  filter_parameter_logging :password, :password_confirmation
+  protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
   private
   
-  def authenticate_user
+  def require_user
     if !current_user
       store_destination
       redirect_to log_in_path
       flash[:notice] = 'Before you go there, you need to log in.'
+    end
+  end
+
+  def require_no_user
+    if current_user
+      redirect_to shares_path
+      # TODO: Flash notice?
     end
   end
 
