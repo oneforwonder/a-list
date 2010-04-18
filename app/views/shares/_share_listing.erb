@@ -1,10 +1,14 @@
 <div class="share_listing">
   <div class="header">
-    <span class="title"> 
+    <span class="title">
       <% if use_url %>
         <%= link_to share_listing.link.title, share_listing.link.url, :target => "_blank" %>
       <% else %>
-        <%= link_to share_listing.link.title, share_path(share_listing.id) %>
+        <% if share_listing.read %>
+          <%= link_to share_listing.link.title, share_path(share_listing.id) %>
+        <% else %>
+          <%= link_to share_listing.link.title, share_path(share_listing.id), :class => "unread" %>
+        <% end %>
       <% end %>
     </span>
     <span class="domain">(<%= share_listing.link.domain %>)</span>

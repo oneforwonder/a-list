@@ -23,6 +23,10 @@
     padding-top: 3px;
 }
 
+.share_listing a.unread {
+    font-weight: bold;
+}
+
 .share_listing a.light_link {
     color: #999;
     text-decoration: underline;
