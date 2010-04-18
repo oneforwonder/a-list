@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   layout "application"
-  before_filter :authenticate_user
+  before_filter :require_user
   
   def create
     @share = Share.find(params[:share_id])

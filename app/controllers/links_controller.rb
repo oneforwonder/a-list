@@ -1,6 +1,6 @@
 class LinksController < ApplicationController
   layout "application"
-  before_filter :authenticate_user
+  before_filter :require_user
   
   def new
     @link = Link.new

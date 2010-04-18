@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   layout "application"
-  before_filter :authenticate_user, :except => [:new, :create, :activate, :finish_registration]
+  before_filter :require_user, :only => [:show, :destroy, :friends]
+  before_filter :require_no_user, :only => [:new, :create, :activate, :finish_registration]
   
   def show
     @user = User.find(params[:id])
@@ -24,11 +25,7 @@ class UsersController < ApplicationController
 
   
   def new
-    if current_user
-      redirect_to shares_path
-    else
-      @user = User.new
-    end
+    @user = User.new
   end
 
   # This method can be called in one of three cases:
@@ -97,6 +94,7 @@ class UsersController < ApplicationController
     
     @names = @user.shares.collect { |s| s.link.submitter.name }.uniq.to_sentence
   end
+
   
   def edit
     @user = current_user
@@ -112,15 +110,6 @@ class UsersController < ApplicationController
       flash[:error] = 'Update failed. Please try again.'
       render :action => "edit"
     end
-  end
-
-  
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-    
-    flash[:notice] = 'Account successfully deleted.'
-    redirect_to root_path
   end
 
 
