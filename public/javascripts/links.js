@@ -39,7 +39,7 @@ Ext.onReady(function()
         displayField: "name",
 //         valueField: 'email',
 //         hiddenName: 'friend_finder',
-//         typeAhead: true,
+        typeAhead: true,
         minChars: 2,
 //         allowBlank: false,
 //         vtype: "email",

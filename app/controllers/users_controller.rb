@@ -116,7 +116,9 @@ class UsersController < ApplicationController
   def friends
     friend_list = []
     @current_user.friends.each do |f|
-      friend_list << {:name => f.name, :email => f.email}
+      if !params.has_key?(:query) || f.name.downcase.include?(params[:query].downcase)
+        friend_list << {:name => f.name, :email => f.email}
+      end
     end
 
     respond_to do |format|
