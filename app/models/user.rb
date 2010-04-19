@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   
   attr_protected :activated
   
+  validates_presence_of :email # Wanted to do :first_name and :last_name but already knew that wouldn't work...
+  
   def active?
     activated
   end

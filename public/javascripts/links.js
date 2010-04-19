@@ -50,6 +50,8 @@ Ext.onReady(function()
         renderTo: "friend_finder",
         width: 250,
         
+        // TODO: Make this handling not suck. Properly select fields, et cetera...
+        
         listeners: {
             beforeselect: function(box, record, index) {
                 console.debug("Selected record:");

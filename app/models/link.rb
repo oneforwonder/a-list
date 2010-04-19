@@ -4,6 +4,8 @@ class Link < ActiveRecord::Base
   has_many :recipients, :through => :shares
   has_many :comments
   
+  validates_presence_of :url, :title, :submitter_id
+  
   before_create :add_http
   
   def domain

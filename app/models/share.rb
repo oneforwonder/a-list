@@ -1,7 +1,9 @@
 class Share < ActiveRecord::Base
   belongs_to :link
   belongs_to :recipient, :class_name => "User"
-
+  
+  validates_presence_of :link_id, :recipient_id
+  
   # Returns all recipients other than the submitter.
   def other_recipients
     self.link.recipients.select { |r| r != self.link.submitter }
