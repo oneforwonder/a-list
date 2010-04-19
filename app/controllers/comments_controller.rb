@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     
     if @comment.save
-      @share.other_shares { |s| s.update_attribute(:read, false) } # All users are notified of a new comment.
+      @share.other_shares.each { |s| s.update_attribute(:read, false) } # All users are notified of a new comment.
       p @share.other_shares.inspect
       flash[:notice] = 'Commented added successfully.'
     else
